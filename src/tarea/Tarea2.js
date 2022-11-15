@@ -22,7 +22,11 @@ export function MatchNombre({nombre}) {
     }
 
     return(
-        <input className={value === nombre ? 'input-match': 'input'} value={value} onChange={handleChange}/>
+        <input 
+            className={value === nombre ? 'input-match': 'input'} 
+            value={value} 
+            onChange={handleChange}
+        />
     );
 }
 
@@ -52,7 +56,12 @@ export function PasswordInput({minLength}) {
     }
 
     return(
-        <input className={value.length < minLength ? "input-match" : 'input'} value={value} onChange={handleChange} type="password"/>
+        <input 
+            className={value.length < minLength ? "input-match" : 'input'} 
+            value={value} 
+            onChange={handleChange} 
+            type="password"
+        />
     );
 }
 

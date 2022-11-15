@@ -42,9 +42,17 @@ export function CheckboxListWithState({ items }) {
     
     const [estado, setEstado] = React.useState(items);
     
+    const handleChange = () => {
+        setEstado({...estado, [key]: !value});
+    }
+
     return (
         Object.entries(estado).map(([key, value]) =>
-            <ControlledCheckbox name={key} value={value} key={key} onChange={() => { setEstado({...estado, [key]: !value})}}/>
+            <ControlledCheckbox 
+                name={key} 
+                value={value} 
+                key={key} 
+                onChange={handleChange}/>
         )
     )
 

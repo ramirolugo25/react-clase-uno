@@ -18,7 +18,11 @@ export function UncontrolledCheckbox({ name, initialValue }) {
 
     return (
         <>
-            <input type="checkbox" onChange={handleChange} checked={estado}/>
+            <input 
+                type="checkbox" 
+                onChange={handleChange} 
+                checked={estado}
+            />
             <label>{name}</label>
         </>
 
