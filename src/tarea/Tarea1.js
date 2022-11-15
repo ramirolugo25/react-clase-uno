@@ -1,3 +1,4 @@
+
 /*
  * Para empezar, hagan que el componente devuelva este fragmento de html,
  * con los cambios necesarios para que sea compatible con JSX
@@ -33,8 +34,22 @@
  *
  * Si no quieren poner una foto suya, pueden tomar la URL de su imagen de perfil de github, como hice yo.
  */
+export const Tarjeta = ({ nombre, titulo, imagen }) => {
+  return (
+    <div className="tarjeta">
+      <img
+        src={imagen}
+        alt="Foto de perfil"
+        className="tarjeta-img"
+      />
+      <div className="tarjeta-data">
+        <header className="tarjeta-data-header">{nombre}</header>
+        <span>{titulo}</span>
+      </div>
+    </div>
+  )
+}
 
-export function Tarjeta(props) {}
 
 /*
  * El esqueleto de este componente será nuestro primer post en un blog.
@@ -94,21 +109,18 @@ Creo que puede haber sido un perro, dado que en Argentina no hay ardillas.`}
 
  */
 
-export function BlogPost(props) {
+export function BlogPost({ titulo, parrafos, autor }) {
   return (
     <article className="post">
       <header className="post-header">
-        <h2 className="post-title">Ardillas</h2>
-        <Tarjeta nombre="Tu nombre" titulo="Tu titulo" imagen="URL de tu imagen" />
+        <h2 className="post-title">{titulo}</h2>
+        <Tarjeta nombre={autor.nombre} titulo={autor.titulo} imagen={autor.imagen} />
       </header>
-      <p className="post-paragraph">Hoy vi una ardilla.</p>
-      <p className="post-paragraph">
-        La ardilla era negra, era más grande que otras ardillas, tenía muchos dientes grandes y
-        encima andaba siempre en cuatro patas, moviendo la cola.
-      </p>
-      <p className="post-paragraph">
-        Creo que puede haber sido un perro, dado que en Argentina no hay ardillas.
-      </p>
+      {
+        parrafos.split('\n').map((parrafo, i) => (
+          <p className="post-paragraph" key={i}>{parrafo}</p>
+        ))
+      }
     </article>
   );
 }
